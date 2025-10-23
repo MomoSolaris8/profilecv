@@ -34,9 +34,7 @@ export default function TicketappPage() {
       'Implemented circuit breaker pattern for service resilience'
     ],
     github: 'https://github.com/yourusername/ticketapp',
-    demo: 'https://ticketapp-demo.netlify.app',
-    duration: '3 months',
-    team: 'Solo project'
+    demo: 'https://ticketapp-demo.netlify.app'
   };
 
   return (
@@ -67,12 +65,7 @@ export default function TicketappPage() {
                 </a>
               </div>
               <div className="flex gap-8 text-sm text-gray-400">
-                <div>
-                  <span className="text-[#c3c297]">Duration:</span> {project.duration}
-                </div>
-                <div>
-                  <span className="text-[#c3c297]">Team:</span> {project.team}
-                </div>
+            
               </div>
             </div>
             

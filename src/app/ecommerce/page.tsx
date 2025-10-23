@@ -38,8 +38,6 @@ export default function EcommercePage() {
     ],
     github: 'https://github.com/yourusername/ecommerce-platform',
     demo: 'https://ecommerce-demo.netlify.app',
-    duration: '4 months',
-    team: 'Solo project'
   };
 
   return (
@@ -70,12 +68,6 @@ export default function EcommercePage() {
                 </a>
               </div>
               <div className="flex gap-8 text-sm text-gray-400">
-                <div>
-                  <span className="text-[#c3c297]">Duration:</span> {project.duration}
-                </div>
-                <div>
-                  <span className="text-[#c3c297]">Team:</span> {project.team}
-                </div>
               </div>
             </div>
             

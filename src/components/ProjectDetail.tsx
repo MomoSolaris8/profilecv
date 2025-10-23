@@ -200,8 +200,7 @@ export default function ProjectDetail({ projectId, onClose }: ProjectDetailProps
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-2">Project Details</h4>
                   <div className="space-y-2 text-gray-300">
-                    <p><span className="text-[#c3c297]">Duration:</span> {project.duration}</p>
-                    <p><span className="text-[#c3c297]">Team:</span> {project.team}</p>
+
                   </div>
                 </div>
               </div>
@@ -266,16 +265,7 @@ export default function ProjectDetail({ projectId, onClose }: ProjectDetailProps
                 View Code
               </a>
             )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#c3c297] text-black px-4 py-2 rounded hover:bg-[#a8a882] transition-colors"
-              >
-                Live Demo
-              </a>
-            )}
+      
           </div>
           <button
             onClick={onClose}
