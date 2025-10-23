@@ -1,11 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Handle scroll to section when coming from project pages
+  useEffect(() => {
+    if (pathname === '/' && window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [pathname]);
 
   const scrollToSection = (id: string) => {
+    // If we're on a project page, navigate to homepage first
+    if (pathname !== '/') {
+      router.push(`/#${id}`);
+      setIsOpen(false);
+      return;
+    }
+    
+    // If we're on homepage, scroll to section
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
