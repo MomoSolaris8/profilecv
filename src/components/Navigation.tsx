@@ -21,6 +21,7 @@ export default function Navigation() {
     }
   }, [pathname]);
 
+
   const scrollToSection = (id: string) => {
     // If we're on a project page, navigate to homepage first
     if (pathname !== '/') {
@@ -41,6 +42,7 @@ export default function Navigation() {
     router.push('/blog');
     setIsOpen(false);
   };
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e0e]/80 backdrop-blur-sm">

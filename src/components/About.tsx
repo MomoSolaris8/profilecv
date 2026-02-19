@@ -1,4 +1,7 @@
 export default function About() {
+    const avatarSrc = '/avater.png';
+    const hasAvatar = avatarSrc.trim().length > 0;
+
     return (
       <section id="about" className="py-24 px-6">
         <div className="container mx-auto max-w-4xl">
@@ -10,11 +13,17 @@ export default function About() {
   
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-[#c3c297] flex-shrink-0">
-              <img
-                src=""
-                alt="Yu Heydemann"
-                className="w-full h-full object-cover"
-              />
+              {hasAvatar ? (
+                <img
+                  src={avatarSrc}
+                  alt="Yu Heydemann"
+                  className="w-full h-full object-cover object-center"
+                />
+              ) : (
+                <div className="w-full h-full bg-[#0f1313] flex items-center justify-center text-[#c3c297] text-3xl font-semibold">
+                  YH
+                </div>
+              )}
             </div>
   
             <p className="text-lg text-gray-300 leading-relaxed">
