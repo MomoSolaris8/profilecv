@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { notFound } from 'next/navigation';
 import { getAllPostMeta, getPostBySlug } from '@/lib/blog';
 
 export function generateStaticParams() {
@@ -7,12 +8,23 @@ export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+export const dynamicParams = false;
+export const dynamic = 'force-static';
+
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  if (!slug) {
+    notFound();
+  }
+
+  const post = await getPostBySlug(slug);
+  if (!post) {
+    notFound();
+  }
 
   return (
     <div className="relative overflow-x-hidden bg-[#0a0e0e] min-h-screen">
@@ -34,6 +46,15 @@ export default async function BlogPostPage({
             className="prose prose-invert max-w-none prose-headings:text-[#c3c297] prose-a:text-[#c3c297] prose-strong:text-gray-100"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
+
+          <div className="mt-10">
+            <a
+              href="/blog/"
+              className="text-sm text-[#c3c297] hover:text-white transition-colors"
+            >
+              ← Back to Blog
+            </a>
+          </div>
         </div>
       </main>
 

@@ -41,8 +41,16 @@ export function getAllPostMeta(): BlogPostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost> {
+export function hasPost(slug: string): boolean {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
+  return fs.existsSync(fullPath);
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
   const processed = await remark().use(html).process(content);
