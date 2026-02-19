@@ -28,13 +28,18 @@ export default function Navigation() {
       setIsOpen(false);
       return;
     }
-    
+
     // If we're on homepage, scroll to section
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
     }
+  };
+
+  const goToBlog = () => {
+    router.push('/blog');
+    setIsOpen(false);
   };
 
   return (
@@ -62,6 +67,11 @@ export default function Navigation() {
             <li>
               <button onClick={() => scrollToSection('projects')} className="text-gray-300 hover:text-[#c3c297] transition-colors">
                 Projects
+              </button>
+            </li>
+            <li>
+              <button onClick={goToBlog} className="text-gray-300 hover:text-[#c3c297] transition-colors">
+                Blog
               </button>
             </li>
             <li>
